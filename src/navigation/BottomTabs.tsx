@@ -1,6 +1,7 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import Ionicons from '@expo/vector-icons/Ionicons';
+import { colors } from '@/theme';
 
 import HomeScreen from '@/screens/Home/HomeScreen';
 import MyCarScreen from '@/screens/MyCar/MyCarScreen';
@@ -8,6 +9,7 @@ import ServicesScreen from '@/screens/Services/ServicesScreen';
 import ExploreScreen from '@/screens/Explore/ExploreScreen';
 import ProfileScreen from '@/screens/Profile/ProfileScreen';
 import RenderingTestScreen from '@/screens/Test/RenderingTestScreen';
+import FloatingTabBar from '@/components/navigation/FloatingTabBar';
 
 const Tab = createBottomTabNavigator();
 
@@ -16,6 +18,9 @@ export default function BottomTabs() {
     <Tab.Navigator
       screenOptions={({ route }) => ({
         headerShown: false,
+        sceneStyle: {
+        backgroundColor: colors.bgPrimary,
+        },
 
         tabBarIcon: ({ color, size }) => {
           let iconName: any;
@@ -41,6 +46,7 @@ export default function BottomTabs() {
           );
         },
       })}
+      tabBar={(props) => <FloatingTabBar {...props} />}
     >
       <Tab.Screen name="Home" component={HomeScreen} />
 
